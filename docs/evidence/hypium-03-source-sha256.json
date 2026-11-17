@@ -1,0 +1,54 @@
+[
+  {
+    "path": "entry/src/main/ets/data/FileTextStore.ets",
+    "sha256": "703456d4eee5f208488304067c230799450f50c6fe59dc1c795f65231cb2b8e2"
+  },
+  {
+    "path": "entry/src/main/ets/data/SaveRepository.ets",
+    "sha256": "563ebe39581a991e45c7dda1f25571931a5058a661c679f19ee25bdfc8e63f1b"
+  },
+  {
+    "path": "entry/src/main/ets/data/StoryRepository.ets",
+    "sha256": "d3fc1c47099c3fc57cfbe1b1d88f2512de7a76da84fcaabf966dae6dd6276dfc"
+  },
+  {
+    "path": "entry/src/main/ets/domain/ConditionEvaluator.ets",
+    "sha256": "9fa3e757a160ed8b56c1b75f0bcbf131b4a5e6ad2760bd8949e50ab779bc2f6c"
+  },
+  {
+    "path": "entry/src/main/ets/domain/EndingResolver.ets",
+    "sha256": "50f9cdf7ea1eccbdf43407d46098f390f5415740a3fff0851741dd33bd1e1748"
+  },
+  {
+    "path": "entry/src/main/ets/domain/GameEngine.ets",
+    "sha256": "b6a2fb954414c8d4ac73a395659ff32c60bca506b8c287a72a0e5d8ff5a15df2"
+  },
+  {
+    "path": "entry/src/main/ets/domain/PuzzleService.ets",
+    "sha256": "8aab3f0210bb3e92e4faa09120481d134a44d6887e255ce3fedc8719516ee79b"
+  },
+  {
+    "path": "entry/src/main/ets/domain/StateValidator.ets",
+    "sha256": "a48d8fa7bbe0f6d773ee25970419644de86418547c261785cbcef572938c9b9c"
+  },
+  {
+    "path": "entry/src/main/ets/models/Models.ets",
+    "sha256": "58ed8f1e78ccc8c6b477d8347922228698cbb2fa34ed6ab185c3bfeeffbd2191"
+  },
+  {
+    "path": "entry/src/main/ets/viewmodels/GameViewModel.ets",
+    "sha256": "dd1027587c4e5b236cbc66e4b1c73d86d9ce3910b7f6003335f38177d7927af8"
+  },
+  {
+    "path": "entry/src/test/List.test.ets",
+    "sha256": "2e4bf5883fa104755626e599645d52abf7aa6ec624ca19820dddca0f1d7a4be1"
+  },
+  {
+    "path": "entry/src/test/TestSupport.ets",
+    "sha256": "d9d455e42243f6c7d1eee8185c76193cf9d4144c523e40c5c9a9776c580aeeb9"
+  },
+  {
+    "path": "entry/src/test/ZeroEcho.test.ets",
+    "sha256": "f5024561c3a3ba9f98fb04e8485ae6a0664e14bf195ed9ca8788cbf1b29aea71"
+  }
+]

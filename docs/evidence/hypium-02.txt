@@ -1,0 +1,28 @@
+> hvigor [32mFinished :entry:default@PreBuild... after 78 ms [39m
+> hvigor [32mFinished :entry:default@CreateModuleInfo... after 2 ms [39m
+> hvigor [32mFinished :entry:default@CreateBuildProfile... after 4 ms [39m
+> hvigor [32mFinished :entry:default@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GenerateUnitTestTemplate...  [39m
+> hvigor [32mFinished :entry:default@GeneratePkgContextInfo... after 2 ms [39m
+> hvigor [32mFinished :entry:default@MergeProfile... after 5 ms [39m
+> hvigor [32mFinished :entry:default@ProcessRouterMap... after 4 ms [39m
+> hvigor [32mFinished :entry:default@ProcessProfile... after 584 ms [39m
+> hvigor [32mFinished :entry:default@GenerateLoaderJson... after 16 ms [39m
+> hvigor [32mFinished :entry:default@UnitTestProcessProfile... after 3 ms [39m
+> hvigor [32mFinished :entry:default@ProcessResource... after 6 ms [39m
+> hvigor [32mFinished :entry:default@CompileResource... after 432 ms [39m
+> hvigor [32mFinished :entry:default@ReplaceUnitTestIndexFile... after 4 ms [39m
+> hvigor [32mFinished :entry:default@BuildUnitTestHook... after 1 ms [39m
+> hvigor ERROR: Failed :entry:default@UnitTestArkTS... 
+> hvigor ERROR: ArkTS Compiler Error
+1 WARN: ArkTS:WARN: For details about ArkTS syntax errors, see FAQs
+1 ERROR: ArkTS:ERROR File: C:/Users/luguangkuo/Documents/Codex/2026-11-16/documents-plugin-documents-openai-primary-runtime/outputs/ZeroEcho/entry/src/main/ets/data/SaveRepository.ets:127:49
+ "throw" statements cannot accept values of arbitrary types (arkts-limited-throw)
+
+
+2 ERROR: ArkTS:ERROR File: C:/Users/luguangkuo/Documents/Codex/2026-11-16/documents-plugin-documents-openai-primary-runtime/outputs/ZeroEcho/entry/src/main/ets/data/SaveRepository.ets:190:49
+ "throw" statements cannot accept values of arbitrary types (arkts-limited-throw)
+
+
+COMPILE RESULT:FAIL {ERROR:3 WARN:1}
+> hvigor ERROR: BUILD FAILED in 7 s 73 ms 
