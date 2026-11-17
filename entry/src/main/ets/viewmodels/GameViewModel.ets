@@ -59,6 +59,10 @@ export class GameViewModel {
       if (!profile.ok) { this.error = profile.error; await this.refresh(); return; }
       this.profile = profile.profile;
       this.message = profile.error;
+      if (profile.error !== '') {
+        const repaired = await this.repository.saveProfile(this.profile, true);
+        if (!repaired.ok) { this.error = '图鉴副本有效，但主文件恢复失败，请重试'; return; }
+      }
       const load = await this.repository.load('auto');
       this.hasGame = load.status === 'valid';
       this.state = this.hasGame ? load.state : createInitialState(this.story);
@@ -75,7 +79,7 @@ export class GameViewModel {
     if (!this.begin()) { return; }
     try {
       const next = createInitialState(this.story);
-      const save = await this.repository.save('auto', next);
+      const save = await this.repository.save('auto', next, true);
       if (!save.ok) { this.error = save.error; return; }
       this.state = next;
       this.hasGame = true;
@@ -103,7 +107,7 @@ export class GameViewModel {
       if (!['1', '2', '3'].includes(slotId) || !this.hasGame) { this.error = '请先开始游戏并选择手动槽位'; return; }
       const existing = await this.repository.load(slotId);
       if (existing.status !== 'empty' && !overwrite) { this.error = '该槽位已有数据，需要确认覆盖'; return; }
-      const result = await this.repository.save(slotId, this.state);
+      const result = await this.repository.save(slotId, this.state, overwrite);
       if (!result.ok) { this.error = result.error; return; }
       this.message = '手动存档 ' + slotId + ' 已保存';
       await this.refresh();
@@ -116,7 +120,7 @@ export class GameViewModel {
       if (load.status !== 'valid') { this.error = load.error || '该槽位尚无存档'; return; }
       // A manually loaded game becomes the automatic continuation only after a successful write.
       if (slotId !== 'auto' || recover) {
-        const saved = await this.repository.save('auto', load.state);
+        const saved = await this.repository.save('auto', load.state, true);
         if (!saved.ok) { this.error = saved.error; return; }
       }
       this.state = load.state;

@@ -80,11 +80,19 @@ export class SaveRepository {
     await this.queue;
     if (!this.validSlot(slot)) { return this.empty('error', '无效的存档槽位'); }
     try {
-      const raw = await this.store.read(this.key(slot));
-      const main = this.decode(raw, slot);
+      let raw: string = '';
+      let main: LoadResult = this.empty('error', '主存档读取失败');
+      try {
+        raw = await this.store.read(this.key(slot));
+        main = this.decode(raw, slot);
+      } catch (_) { /* A validated backup may still be readable. */ }
       // A tombstone is an intentional deletion. Never resurrect its backup.
       if ((main.status === 'empty' && raw !== '') || main.status === 'valid') { return main; }
-      const backup = this.decode(await this.store.read(this.key(slot) + '.bak'), slot);
+      let backup: LoadResult = this.empty('empty');
+      try { backup = this.decode(await this.store.read(this.key(slot) + '.bak'), slot); }
+      catch (_) {
+        if (main.status === 'empty') { return this.empty('error', '无法检查存档副本，请重试'); }
+      }
       main.recoverable = backup.status === 'valid';
       if (recover && main.recoverable) { return backup; }
       if (raw === '' && main.recoverable) {
@@ -103,7 +111,7 @@ export class SaveRepository {
     await task;
     return result;
   }
-  async save(slot: string, state: GameState): Promise<WriteResult> {
+  async save(slot: string, state: GameState, replaceUnreadable: boolean = false): Promise<WriteResult> {
     if (!this.validSlot(slot)) { return { ok: false, error: '无效的存档槽位' }; }
     const invalid = validateState(state, this.story);
     if (invalid !== '') { return { ok: false, error: invalid }; }
@@ -114,7 +122,9 @@ export class SaveRepository {
     const raw = JSON.stringify(record);
     if (raw.length > 524288) { return { ok: false, error: '存档超过安全大小限制' }; }
     return this.serial(async (): Promise<void> => {
-      const old = await this.store.read(this.key(slot));
+      let old: string = '';
+      try { old = await this.store.read(this.key(slot)); }
+      catch (_) { if (!replaceUnreadable) { throw new Error('Primary save read failed'); } }
       if (this.decode(old, slot).status === 'valid') {
         await this.store.writeAtomic(this.key(slot) + '.bak', old);
       }
@@ -158,20 +168,26 @@ export class SaveRepository {
   async loadProfile(): Promise<ProfileResult> {
     await this.queue;
     try {
-      const raw = await this.store.read('profile.json');
+      let raw: string = '';
+      let primaryFailed: boolean = false;
+      try { raw = await this.store.read('profile.json'); }
+      catch (_) { primaryFailed = true; }
       const profile = this.decodeProfile(raw);
       if (profile) { return { ok: true, profile: profile, error: '' }; }
-      const backup = this.decodeProfile(await this.store.read('profile.json.bak'));
+      const backupRaw = await this.store.read('profile.json.bak');
+      const backup = this.decodeProfile(backupRaw);
       if (backup) { return { ok: true, profile: backup, error: '图鉴主文件损坏，已读取最近有效副本' }; }
-      if (raw === '') { return { ok: true, profile: new Profile(), error: '' }; }
+      if (raw === '' && backupRaw === '' && !primaryFailed) { return { ok: true, profile: new Profile(), error: '' }; }
       return { ok: false, profile: new Profile(), error: '图鉴损坏，未覆盖原文件；可重试或在设置中确认重置' };
     } catch (_) { return { ok: false, profile: new Profile(), error: '图鉴读取失败，请重试' }; }
   }
-  async saveProfile(profile: Profile): Promise<WriteResult> {
+  async saveProfile(profile: Profile, replaceUnreadable: boolean = false): Promise<WriteResult> {
     const raw = JSON.stringify(profile);
     if (!this.decodeProfile(raw)) { return { ok: false, error: '图鉴数据无效' }; }
     return this.serial(async (): Promise<void> => {
-      const old = await this.store.read('profile.json');
+      let old: string = '';
+      try { old = await this.store.read('profile.json'); }
+      catch (_) { if (!replaceUnreadable) { throw new Error('Primary profile read failed'); } }
       if (this.decodeProfile(old)) { await this.store.writeAtomic('profile.json.bak', old); }
       await this.store.writeAtomic('profile.json', raw);
     });
