@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "离线校园剧情探索"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "零点回声校园信号疑云"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "零点回声"
+    }
+  ]
+}
