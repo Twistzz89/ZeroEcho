@@ -401,7 +401,7 @@ struct Index {
           .enabled(this.ready && !this.busy).onClick(() => this.confirmNewGame())
         this.shortcut('线索档案', '检视本局已收集的记录', 'archive')
         this.shortcut('存档管理', '自动进度与三个手动槽位', 'saves')
-        this.shortcut('结局图鉴', this.unlockedEndings.length.toString() + ' / 4 已解锁', 'gallery')
+        this.shortcut('结局图鉴', '查看已解锁结局与达成条件', 'gallery')
         this.shortcut('设置与说明', '阅读字号、操作规则与数据管理', 'settings')
         Text('所有角色、学校与事件均为虚构。').fontSize(12).fontColor('#728B9B').margin({ top: 8, bottom: 20 })
       }.width('100%').padding({ left: 22, right: 22, top: 16, bottom: 24 })
@@ -462,7 +462,8 @@ struct Index {
 
   @Builder
   explore() {
-    this.pageHeader('调查现场', this.chapterTitle())
+    this.pageHeader('调查现场', '核查每一条记录，选择下一步行动')
+    Text(this.chapterTitle()).fontSize(14).fontColor('#6EE3D2').width('100%')
     if (!this.hasGame) {
       Text('尚无可用进度，请返回首页开始新游戏。').fontSize(17).fontColor('#B9CBD6')
     } else {
@@ -497,7 +498,8 @@ struct Index {
 
   @Builder
   archive() {
-    this.pageHeader('线索档案', '已取得 ' + this.game.clueIds.length.toString() + ' / 6 条 · 点击卡片查看详情')
+    this.pageHeader('线索档案', '点击已取得的卡片查看详情')
+    Text('已取得 ' + this.game.clueIds.length.toString() + ' / 6 条').fontSize(14).fontColor('#6EE3D2')
     ForEach(this.story.clues, (clue: Clue) => {
       ClueCard({
         code: clue.id, titleText: clue.title, category: clue.category, contentText: clue.text,
@@ -510,7 +512,8 @@ struct Index {
 
   @Builder
   history() {
-    this.pageHeader('决策回顾', '只记录实际完成的行动。当前位置：' + this.nodeTitle(this.game.currentNodeId))
+    this.pageHeader('决策回顾', '只记录实际完成的行动')
+    Text('当前位置：' + this.nodeTitle(this.game.currentNodeId)).fontSize(14).fontColor('#6EE3D2')
     if (this.game.history.length === 0) {
       Text('还没有决策记录。开始调查后，你的选择与状态变化会出现在这里。')
         .fontSize(17).lineHeight(28).fontColor('#AFC5D1')
@@ -540,7 +543,7 @@ struct Index {
         onSave: () => this.save(slot), onLoad: () => this.confirmLoad(slot, false),
         onDelete: () => this.confirmDelete(slot), onRecover: () => this.confirmLoad(slot, true)
       })
-    }, (slot: SlotInfo) => slot.id)
+    }, (slot: SlotInfo) => slot.id + ':' + slot.status + ':' + slot.savedAt + ':' + slot.recoverable.toString())
     if (this.slots.length === 0) {
       Text('尚未读取存档信息，可返回首页重试。').fontSize(16).fontColor('#AFC5D1')
     }
@@ -548,7 +551,8 @@ struct Index {
 
   @Builder
   gallery() {
-    this.pageHeader('结局图鉴', this.unlockedEndings.length.toString() + ' / 4 已解锁 · 开始新游戏会保留记录')
+    this.pageHeader('结局图鉴', '开始新游戏会保留已解锁记录')
+    Text(this.unlockedEndings.length.toString() + ' / 4 已解锁').fontSize(14).fontColor('#6EE3D2')
     ForEach(this.story.endings, (ending: Ending) => {
       Column({ space: 12 }) {
         Text(ending.id).fontSize(13).fontColor('#6EE3D2').width('100%')
