@@ -1,0 +1,222 @@
+{
+  "date": "2026-11-17T13:14:19.888103+00:00",
+  "bundle": "com.twistzz89.zeroecho",
+  "pidBefore": "5608",
+  "pidWhileStopped": "",
+  "pidAfter": "5893",
+  "stopOutput": "force stop process successfully.",
+  "startOutput": "start ability successfully.",
+  "fullEnvelopeEqual": true,
+  "fieldsCompared": [
+    "currentNodeId",
+    "remainingActions",
+    "trust",
+    "clueIds",
+    "solvedPuzzleIds",
+    "flags",
+    "usedActionIds",
+    "attempts",
+    "history",
+    "endingId",
+    "revision"
+  ],
+  "state": {
+    "currentNodeId": "N08",
+    "remainingActions": 11,
+    "trust": 60,
+    "clueIds": [
+      "CL01",
+      "CL02",
+      "CL03",
+      "CL04"
+    ],
+    "solvedPuzzleIds": [
+      "P01"
+    ],
+    "flags": [
+      "shared",
+      "witnessed"
+    ],
+    "usedActionIds": [
+      "share",
+      "take-note",
+      "record-witness",
+      "take-calibration",
+      "take-gateway"
+    ],
+    "attempts": [
+      {
+        "puzzleId": "P01",
+        "count": 2
+      }
+    ],
+    "history": [
+      {
+        "sequence": 1,
+        "fromNodeId": "N01",
+        "actionId": "share",
+        "actionText": "共享收到的信息，约定一起核查",
+        "toNodeId": "N02",
+        "cost": 1,
+        "trustDelta": 10,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：共享收到的信息，约定一起核查"
+      },
+      {
+        "sequence": 2,
+        "fromNodeId": "N02",
+        "actionId": "take-note",
+        "actionText": "调查实验笔记",
+        "toNodeId": "N03",
+        "cost": 1,
+        "trustDelta": 0,
+        "clueIds": [
+          "CL01"
+        ],
+        "puzzleId": "",
+        "message": "已执行：调查实验笔记"
+      },
+      {
+        "sequence": 3,
+        "fromNodeId": "N03",
+        "actionId": "note-to-cabinet",
+        "actionText": "前往档案柜",
+        "toNodeId": "N04",
+        "cost": 0,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：前往档案柜"
+      },
+      {
+        "sequence": 4,
+        "fromNodeId": "N04",
+        "actionId": "cabinet-back",
+        "actionText": "回到实验桌查看笔记",
+        "toNodeId": "N02",
+        "cost": 0,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：回到实验桌查看笔记"
+      },
+      {
+        "sequence": 5,
+        "fromNodeId": "N02",
+        "actionId": "skip-note",
+        "actionText": "先去档案柜",
+        "toNodeId": "N04",
+        "cost": 0,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：先去档案柜"
+      },
+      {
+        "sequence": 6,
+        "fromNodeId": "N04",
+        "actionId": "P01",
+        "actionText": "档案柜编号：重试",
+        "toNodeId": "N04",
+        "cost": 1,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "答案尚不正确，消耗1次调查机会；请查看线索后重试"
+      },
+      {
+        "sequence": 7,
+        "fromNodeId": "N04",
+        "actionId": "P01",
+        "actionText": "档案柜编号：正确",
+        "toNodeId": "N05",
+        "cost": 1,
+        "trustDelta": 0,
+        "clueIds": [
+          "CL02"
+        ],
+        "puzzleId": "P01",
+        "message": "推理正确，已取得新线索"
+      },
+      {
+        "sequence": 8,
+        "fromNodeId": "N05",
+        "actionId": "cooperate",
+        "actionText": "邀请林澈协助，进入现场核对",
+        "toNodeId": "N06",
+        "cost": 0,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：邀请林澈协助，进入现场核对"
+      },
+      {
+        "sequence": 9,
+        "fromNodeId": "N06",
+        "actionId": "record-witness",
+        "actionText": "记录口述并继续核查",
+        "toNodeId": "N08",
+        "cost": 1,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：记录口述并继续核查"
+      },
+      {
+        "sequence": 10,
+        "fromNodeId": "N08",
+        "actionId": "take-calibration",
+        "actionText": "调查时钟校准单",
+        "toNodeId": "N09",
+        "cost": 1,
+        "trustDelta": 0,
+        "clueIds": [
+          "CL03"
+        ],
+        "puzzleId": "",
+        "message": "已执行：调查时钟校准单"
+      },
+      {
+        "sequence": 11,
+        "fromNodeId": "N09",
+        "actionId": "calibration-back",
+        "actionText": "返回调查区",
+        "toNodeId": "N08",
+        "cost": 0,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：返回调查区"
+      },
+      {
+        "sequence": 12,
+        "fromNodeId": "N08",
+        "actionId": "take-gateway",
+        "actionText": "调查网关事件日志",
+        "toNodeId": "N10",
+        "cost": 1,
+        "trustDelta": 0,
+        "clueIds": [
+          "CL04"
+        ],
+        "puzzleId": "",
+        "message": "已执行：调查网关事件日志"
+      },
+      {
+        "sequence": 13,
+        "fromNodeId": "N10",
+        "actionId": "gateway-back",
+        "actionText": "返回调查区",
+        "toNodeId": "N08",
+        "cost": 0,
+        "trustDelta": 0,
+        "clueIds": [],
+        "puzzleId": "",
+        "message": "已执行：返回调查区"
+      }
+    ],
+    "endingId": "",
+    "revision": 13
+  }
+}

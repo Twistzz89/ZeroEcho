@@ -1,0 +1,54 @@
+{
+  "capture": "模拟器真实屏幕连续采集，根据采集时间编码；节选操作、添加中文字幕，无声",
+  "checked": "完整解码成功",
+  "streams": [
+    {
+      "codec_name": "h264",
+      "width": 630,
+      "height": 1490,
+      "r_frame_rate": "12/1"
+    }
+  ],
+  "format": {
+    "duration": "211.833333",
+    "size": "7005011"
+  },
+  "chapters": [
+    {
+      "description": "独自核查  ·  信任 50",
+      "rawCapture": "demo-opening.mp4",
+      "in": 0.5,
+      "out": 102.8
+    },
+    {
+      "description": "合作调查  ·  信任 60",
+      "rawCapture": "demo.mp4",
+      "in": 11,
+      "out": 37.5
+    },
+    {
+      "description": "合作调查  ·  完整时间线",
+      "rawCapture": "demo.mp4",
+      "in": 93,
+      "out": 126
+    },
+    {
+      "description": "回看决策与存档",
+      "rawCapture": "demo-second-route.mp4",
+      "in": 91,
+      "out": 103
+    },
+    {
+      "description": "切换到手动档 1",
+      "rawCapture": "demo-second-route.mp4",
+      "in": 132,
+      "out": 139
+    },
+    {
+      "description": "相同起点  ·  比较结局",
+      "rawCapture": "demo-second-route.mp4",
+      "in": 167,
+      "out": 198
+    }
+  ]
+}

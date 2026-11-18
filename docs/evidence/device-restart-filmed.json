@@ -1,0 +1,91 @@
+{
+  "stopOutput": "force stop process successfully.",
+  "startOutput": "start ability successfully.",
+  "beforePid": "2303",
+  "stoppedPid": "",
+  "afterPid": "7741",
+  "fullEnvelopeEqual": true,
+  "save": {
+    "schemaVersion": 1,
+    "contentVersion": 1,
+    "slotId": "auto",
+    "savedAt": "2026-11-18T05:22:02.827Z",
+    "deleted": false,
+    "state": {
+      "currentNodeId": "N04",
+      "remainingActions": 15,
+      "trust": 50,
+      "clueIds": [
+        "CL01"
+      ],
+      "solvedPuzzleIds": [],
+      "flags": [
+        "reserved"
+      ],
+      "usedActionIds": [
+        "hold",
+        "take-note"
+      ],
+      "attempts": [
+        {
+          "puzzleId": "P01",
+          "count": 1
+        }
+      ],
+      "history": [
+        {
+          "sequence": 1,
+          "fromNodeId": "N01",
+          "actionId": "hold",
+          "actionText": "暂时保留信息，先独自核查",
+          "toNodeId": "N02",
+          "cost": 1,
+          "trustDelta": 0,
+          "clueIds": [],
+          "puzzleId": "",
+          "message": "已执行：暂时保留信息，先独自核查"
+        },
+        {
+          "sequence": 2,
+          "fromNodeId": "N02",
+          "actionId": "take-note",
+          "actionText": "调查实验笔记",
+          "toNodeId": "N03",
+          "cost": 1,
+          "trustDelta": 0,
+          "clueIds": [
+            "CL01"
+          ],
+          "puzzleId": "",
+          "message": "已执行：调查实验笔记"
+        },
+        {
+          "sequence": 3,
+          "fromNodeId": "N03",
+          "actionId": "note-to-cabinet",
+          "actionText": "前往档案柜",
+          "toNodeId": "N04",
+          "cost": 0,
+          "trustDelta": 0,
+          "clueIds": [],
+          "puzzleId": "",
+          "message": "已执行：前往档案柜"
+        },
+        {
+          "sequence": 4,
+          "fromNodeId": "N04",
+          "actionId": "P01",
+          "actionText": "档案柜编号：重试",
+          "toNodeId": "N04",
+          "cost": 1,
+          "trustDelta": 0,
+          "clueIds": [],
+          "puzzleId": "",
+          "message": "答案尚不正确，消耗1次调查机会；请查看线索后重试"
+        }
+      ],
+      "endingId": "",
+      "revision": 4
+    }
+  }
+}

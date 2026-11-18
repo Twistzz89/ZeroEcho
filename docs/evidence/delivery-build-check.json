@@ -1,0 +1,22 @@
+{
+  "checkedUTC": "2026-11-18T05:35:27.375055+00:00",
+  "environment": "DevEco Studio 5.0.13.240 / API 17 / Huawei_Phone x86_64",
+  "checkout": "新本地检出，不含原工程的 oh_modules、.hvigor、build 或 .test。使用交付版 entry/build-profile.json5。",
+  "commands": [
+    "ohpm install",
+    "scripts/build.ps1 -Task sync",
+    "scripts/build.ps1 -Task build",
+    "scripts/build.ps1 -Task test"
+  ],
+  "hypium": "Tests run: 43, Failure: 0, Error: 0, Pass: 43, Ignore: 0",
+  "hapSHA256": "0936e1e73bdfe1e56f5ecd4c20812a656079308a298f4796d110f8486f76289e",
+  "hapBytes": 525075,
+  "install": "[Info]App install path:C:\\Users\\luguangkuo\\Documents\\Codex\\2026-11-16\\documents-plugin-documents-openai-primary-runtime\\outputs\\零点回声-API17-模拟器版.hap msg:install bundle successfully. \r\nAppMod finish",
+  "start": "start ability successfully.",
+  "observedResultPage": "局部修复",
+  "savedEnvelopeUnchanged": true,
+  "endingId": "E02",
+  "remainingActions": 12,
+  "trust": 50,
+  "revision": 13
+}
