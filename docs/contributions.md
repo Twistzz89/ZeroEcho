@@ -1,11 +1,16 @@
-# 个人贡献与AI辅助说明
+# 个人分工与提交对应
 
-姓名：卢广阔。学号：20240313213。班级：24物联2。GitHub：Twistzz89。用户确认按独立完成方式开展，无组员。
+卢广阔，24物联2，学号 20240313213，GitHub 账号 Twistzz89。独立项目，无组员。本人负责整体工程及课程交付。Codex 辅助编写、修改代码与测试，协助执行构建、模拟器验收、文档撰写和报告排版。本人需能解释和演示对应实现。
 
-本项目由本人负责整体学习、解释、修改、演示和交付，当前实现过程使用Codex辅助生成代码、文档、测试和调试。该说明不等同于已经核实本人独立编写所有代码；请遵循课程AI辅助要求如实披露，并完成核心代码的理解与验收。自动生成记录不作为未经核实的个人能力证明。
+|本地提交|可检查的变更|相关模块或证据|
+|---|---|---|
+|3b10881|业务编码前提交需求与初始规则|docs/requirements.md|
+|cdf611d|实现原生调查流程、规则、存档与恢复|entry/src/main/ets 下的 domain、data、viewmodels、pages、components|
+|7031d77|处理不可读主文件及启动出错的情况|SaveRepository.ets、EntryAbility.ets、StartupError.ets|
+|a2c0082|加入官方 Hypium 用例及三轮真实结果|entry/src/test、docs/evidence/hypium-03-results.txt|
+|c45f8ba|修复设备状态栏和槽位卡显示旧数据|StatusBar.ets、Index.ets、修复前后设备截图|
+|5ddf041|记录模拟器分支、重启、备份恢复和交付 HAP 的干净构建|docs/device-acceptance.md、docs/evidence、docs/screenshots|
 
-模块范围：领域规则、ArkUI页面、存档恢复、集成及测试。源码按实际目录组织，提交记录从真实Git历史提取，不冒用组员身份或补造开发时间。
+可运行 `git log --oneline --reverse` 查看完整本地历史，运行 `git show --stat 短哈希` 或 `git show 短哈希` 对照源码。作者配置仅对本项目有效，使用 Twistzz89 和该账号的 GitHub 隐私邮箱。
 
-本地作者配置仅对本项目生效：Twistzz89 / 324456635+Twistzz89@users.noreply.github.com。邮箱使用已连接GitHub账户ID构成的隐私邮箱。需求基线提交为3b10881，在业务代码前建立。
-
-远程仓库尚未建立；最终个人Commit证明需上传后由GitHub记录与教师核查。详细提交可执行 `git log --oneline --stat` 查看。
+[目标 GitHub 仓库](https://github.com/Twistzz89/ZeroEcho)已由本人给出。本次按本人选择先完成本地交付，远程推送与教师访问核实留待之后。

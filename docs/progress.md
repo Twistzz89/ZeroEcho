@@ -1,11 +1,15 @@
-# 当前进度
+# 本地交付进度
 
-2026年11月17日，阶段B至E集成验证中。两次额度中断后从已有代码继续。
+截至 2026 年 11 月 18 日，《零点回声：校园信号疑云》已在 API17 手机模拟器完成本地验收。源码、模块测试、演示视频、安装包及个人报告均已生成。目标仓库为 [Twistzz89/ZeroEcho](https://github.com/Twistzz89/ZeroEcho)，按卢广阔的选择稍后同步。
 
-已读取用户任务书及两份教师DOCX，用户明确授权开始开发。需求基线已在业务代码前创建。发现DevEco Studio 5.0.13.240、API17 SDK和Hello World空模板，新项目保留于outputs/ZeroEcho，不改原工程。
+|阶段|完成情况与复核入口|
+|---|---|
+|A　环境与需求|业务代码前已提交需求基线 3b10881。[需求与验收对应](requirements.md)|
+|B、C　业务|三章 17 节点、六条线索、两道谜题和四种结局。T23 从新游戏分别到达四结局。[合法路线](ending-routes.md)|
+|D　界面|原生导航连接现场、档案、回顾、存档、图鉴和设置。模拟器发现并修复状态栏未刷新。[修复前](screenshots/defect-status-before.png) · [修复后](screenshots/02-explore.png)|
+|E　测试|Hypium 共 43 项通过，干净源码检出复测仍为 43/43。两次结束进程后恢复完整记录，另验证测试槽的副本恢复、删除及字号设置。[模块结果](test-results.md) · [设备验收](device-acceptance.md)|
+|F　本地交付|最终 HAP 在模拟器覆盖安装并打开原进度。[构建及安装记录](evidence/delivery-build-check.json) · [带字幕实录](evidence/zero-echo-demo.mp4)。教师模板 Word 报告在交付目录，工程和历史随 ZIP 提供。|
 
-已编码：原生Navigation页面、三章17节点、六线索两谜题四结局、条件与历史校验、JSON存档和备份、Profile图鉴、Mock单元测试。ArkTS编译已通过。首次编译修复FontWeight.Light不被API17支持的问题；第二次在PackageHap时系统Java崩溃，正在改用DevEco自带JBR。
+负责人为卢广阔，GitHub 账号 Twistzz89，无组员，使用 Codex 辅助开发与撰写。[贡献说明](contributions.md)
 
-用户已确认卢广阔、20240313213、24物联2、独立完成，GitHub Twistzz89。当前本地Git仅需求基线提交3b10881，后续实际实现待验证后分阶段提交。没有远程仓库。
-
-模拟器Huawei_Phone已启动，API17/OpenHarmony5.0.5.165，hdc目标127.0.0.1:5555，沙箱外可见。尚未安装本应用；尚无设备运行、测试通过、录屏或个人报告完成声明。下一步修复打包、运行Hypium、安装模拟器并取真实重启证据。
+尚待本人完成 GitHub 同步、教师访问核实、学习通提交以及纸质交付。学习通答案需同时填写仓库链接和账号名。纸质版按教师材料双面打印装订，2026 年 12 月 31 日前统一交付。电子截止时间另以学习通或教师通知为准。

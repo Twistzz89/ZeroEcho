@@ -42,4 +42,4 @@ share → skip-note → skip-cabinet → work-alone → alone-to-hub → to-repo
 
 ## 验证边界
 
-上述四条路线已于2026年11月16日在Windows宿主上执行同一份领域源码，并对每步JSON往返恢复执行严格状态验证；不是在模拟器或真机完成。设备路线验收、真实进程重启和录屏仍须独立执行并留证。字符数是当时实际序列化结果，包含用户可读中文历史；存储容量应另测UTF-8字节数及SaveEnvelope开销。
+上述数字取自 11 月 16 日的宿主领域预检。随后在官方 Hypium 用例 T23 中从起点重跑四条路线，并在 API17 模拟器通过界面实际完成 E01、E02 与两次重启恢复。[模块结果](test-results.md) · [设备结果](device-acceptance.md)。这里的字符数是业务状态样本，正式 SaveEnvelope 的 UTF-8 实测见测试结果。

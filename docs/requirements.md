@@ -1,6 +1,6 @@
 # 零点回声软件需求说明书
 
-版本 0.1，2026年11月16日。本文在业务编码前建立，后续按实际实现同步。
+版本 1.0，2026 年 11 月 18 日本地验收版。最初的 0.1 需求说明于业务编码前建立，Git 提交 3b10881 保留原文。下表的“初始状态”保留当时记录，末尾列出现行验收结果。
 
 ## 背景与范围
 
@@ -26,7 +26,7 @@
 页面和可复用组件 → GameViewModel → GameEngine → ConditionEvaluator / PuzzleService / EndingResolver / StoryRepository。
 GameViewModel → SaveRepository → TextStore → HarmonyOS应用沙箱文件。Profile与游戏槽逻辑独立。时间通过Clock接口注入。
 
-数据源为只读强类型StoryDefinition；GameState保存nodeId、remainingActions、trust、clueIds、solvedPuzzleIds、flags、usedActionIds、attempts、history、endingId、revision。GameAction带nodeId、id、kind、expectedRevision及答案。失败返回原状态和明确错误；成功返回独立副本，不在原对象上扣费。
+数据源为只读强类型StoryDefinition；GameState保存currentNodeId、remainingActions、trust、clueIds、solvedPuzzleIds、flags、usedActionIds、attempts、history、endingId、revision。GameAction带nodeId、id、kind、expectedRevision及答案和事件顺序。失败返回原状态和明确错误；成功返回独立副本，不在原对象上扣费。
 
 存档SaveEnvelope具有schemaVersion、contentVersion、slotId、savedAt和state。存档不包含剧情全文或图片。使用沙箱JSON文件，临时文件写入/同步/替换主文件，并保留最近经过验证的副本；不使用Preferences多键写入冒充事务。存档体积通过实际测试测量。所有写入由ViewModel忙碌锁与Repository队列协调，启动/加载/保存失败时阻止进一步剧情推进。删除槽不清空其他槽或图鉴。Profile存储结局和字体设置，新游戏保留Profile，清空全部须确认。
 
@@ -44,8 +44,22 @@ API以实际安装的HarmonyOS 5.0.5(API17)兼容环境为基线；严格ArkTS�
 
 ## 分工与未知项
 
-真实姓名、学号、班级、独立/组队情况、本人负责范围待用户确认。已连接GitHub账号Twistzz89，尚待用户确认署名；本机Git作者未配置，目标仓库未确定。Codex辅助生成实现、文档与测试，不将AI辅助成果表述为已核实的本人独立贡献。电子提交时间待用户核实。
+独立项目，卢广阔负责整体工程，无组员。GitHub 为 Twistzz89，目标仓库为 Twistzz89/ZeroEcho。Codex 辅助编写、调试、测试和整理文档。远程同步、教师访问和学习通提交待本人完成。电子提交时间待本人核实。
 
 ## 追溯约定
 
 需求编号 → 模块和接口 → 测试编号 → 证据路径 → 真实个人Commit。未执行项保留“待执行”。最终开发状态记录docs/progress.md，测试实测记录docs/test-results.md。
+
+## 本地验收对照
+
+|需求|实现与接口|复核记录|提交|
+|---|---|---|---|
+|FR01、FR02|GameViewModel.newGame、GameEngine.dispatch、ConditionEvaluator|T01、T02、T09、T14、S30、S31；两条信任路线实录|cdf611d、a2c0082|
+|FR03、FR04|StoryRepository、ClueCard、PuzzleService.checkPuzzle|T03、T04、T13、T16、T17；设备档案、错答及时间线截图|cdf611d、a2c0082|
+|FR05|EndingResolver、Profile|T05、T06、T08、T11、T23；E01、E02 设备结果及图鉴|cdf611d、a2c0082|
+|FR06、FR07|SaveRepository、FileTextStore、StateValidator、启动错误页|T07 两次设备重启；T19—T22、S26、S39—S44；设备槽 3 显式副本恢复|cdf611d、7031d77、a2c0082|
+|FR08|Index、StatusBar、ChoiceButton、ClueCard、SaveSlotCard|7 个入口实测可达，状态栏与存档值一致，字号可保存|cdf611d、c45f8ba|
+|FR09|entry/src/test、构建脚本、设备记录|43/43，干净检出复测，交付 HAP 已覆盖安装并启动|a2c0082 及后续验收提交|
+|FR10|README、演示视频、本地 Git 历史、教师模板报告|本地交付完成；GitHub 推送、教师访问及实际课程提交待办|见实际 Git 历史|
+
+入口：[模块测试](test-results.md) · [设备验收](device-acceptance.md) · [贡献记录](contributions.md) · [录屏](evidence/zero-echo-demo.mp4)。

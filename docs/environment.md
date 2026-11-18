@@ -1,6 +1,6 @@
 # 本机环境只读检查
 
-检查日期：2026-11-16。此记录仅包含实际读取与版本查询结果，未构建、未安装应用、未配置签名、未运行设备测试。
+本页保留 2026-11-16 业务编码前的环境快照。后续已完成构建、安装与模拟器实测。[最终构建](evidence/delivery-build-check.json) · [设备运行](device-acceptance.md)
 
 ## 工具链
 
@@ -47,7 +47,7 @@ $env:NODE_HOME = 'D:\Huawei\DevEco Studio\tools\node'
 
 SDK 环境变量路径应指向 `sdk`，其下有 `default/sdk-pkg.json`。已读本机 `hvigor-ohos-plugin/src/sdk/lib/property-get.js`，HarmonyOS 模式从 `DEVECO_SDK_HOME` 读取，不依赖空模板 `local.properties`。
 
-## 当前缺口
+## 初次环境检查时的缺口（历史记录）
 
 1. 没有在线设备，需要创建/启动已有模拟器或连接真机，才能实际运行、测试关闭进程恢复和取得录屏。
 2. 空模板没有签名配置；构建与安装签名能力需要在新工程实际验证，不能预称可安装。
